@@ -1,3 +1,24 @@
+function addStatus(li) {
+    const badge = document.createElement('span');
+    badge.className = 'status pending';
+    badge.textContent = 'Pending';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'toggle-btn';
+    btn.textContent = 'Mark as Completed';
+    btn.addEventListener('click', function () {
+        const done = badge.classList.toggle('completed');
+        badge.classList.toggle('pending', !done);
+        badge.textContent = done ? 'Completed' : 'Pending';
+        btn.textContent = done ? 'Mark as Pending' : 'Mark as Completed';
+    });
+    li.appendChild(badge);
+    li.appendChild(btn);
+}
+
+// Apply to existing sample tasks
+document.querySelectorAll('#task-list li').forEach(addStatus);
+
 document.getElementById('task-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const title = document.getElementById('task-title').value.trim();
@@ -11,7 +32,8 @@ document.getElementById('task-form').addEventListener('submit', function(e) {
     } else {
         errorMsg.classList.add('hidden');
         const li = document.createElement('li');
-        li.textContent = title + " - " + desc;
+        li.textContent = title + " - " + desc + " ";
+        addStatus(li);
         taskList.appendChild(li);
 
         document.getElementById('task-title').value = '';
