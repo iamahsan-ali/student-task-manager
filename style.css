@@ -98,3 +98,17 @@ li {
         margin-left: 0;
     }
 }
+
+/* Priority Label Styles */
+.priority {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+}
+.priority.high { background: #c53030; }
+.priority.medium { background: #dd6b20; }
+.priority.low { background: #2f855a; }

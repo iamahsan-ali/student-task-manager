@@ -31,8 +31,15 @@ document.getElementById('task-form').addEventListener('submit', function(e) {
         errorMsg.classList.remove('hidden');
     } else {
         errorMsg.classList.add('hidden');
+        const priorityInput = document.getElementById('priority');
         const li = document.createElement('li');
         li.textContent = title + " - " + desc + " ";
+
+        const pr = document.createElement('span');
+        pr.className = 'priority ' + priorityInput.value.toLowerCase();
+        pr.textContent = 'Priority: ' + priorityInput.value;
+        li.appendChild(pr);
+
         addStatus(li);
         taskList.appendChild(li);
 
